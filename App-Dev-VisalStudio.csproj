@@ -49,17 +49,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Tamagochi.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Include="Tamagochi.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Page2.xaml.cs">
-	    <DependentUpon>Page2.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Page2.xaml">
+	  <MauiXaml Update="Views\StatsUIView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

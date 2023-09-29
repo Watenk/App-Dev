@@ -4,6 +4,8 @@
     {
         public App()
         {
+            DependencyService.RegisterSingleton<TamagochiDataStore>(new TamagochiDataStore());
+
             InitializeComponent();
 
             MainPage = new AppShell();

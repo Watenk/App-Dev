@@ -9,6 +9,24 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <x:Double x:Key="baseFontSize">32</x:Double>
+
+            <Style x:Key="uiLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource baseFontSize}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="onlyDisplaySlider" TargetType="Slider">
+                <Setter Property="ScaleY" Value="10" />
+                <Setter Property="IsEnabled" Value="False" />
+                <Setter Property="Minimum" Value="0" />
+                <Setter Property="Maximum" Value="100" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand" />
+                <Setter Property="ThumbColor" Value="Transparent" />
+                <Setter Property="ThumbImageSource" Value="Resources/Images/transparent.png" />
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

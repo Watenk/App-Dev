@@ -1,0 +1,76 @@
+﻿using System.Diagnostics;
+using System.Timers;
+
+namespace App_Dev_VisalStudio
+{
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+            tamagochiDataStore.CreateItem(tamagochiDataStore.ReadTamagochiJson());
+
+            var timer = new System.Timers.Timer()
+            {
+                Interval = 10000,
+                AutoReset = true
+            };
+            timer.Elapsed += Update;
+            timer.Start();
+
+            InitializeComponent();
+
+            NameText.Text = tamagochiDataStore.ReadItem().Name.ToString();
+        }
+
+        //Update
+        /////////////////////////////////////////////////////////////////
+
+        private void Update(object sender, ElapsedEventArgs e)
+        {
+            CheckValues();
+        }
+
+        private void CheckValues()
+        {
+            //Check here if tamagochi values are right or wrong
+        }
+
+        //OnImageClicked
+        ///////////////////////////////////////////////////////////////////
+
+        private void OnImageClicked(object sender, TappedEventArgs e)
+        {
+            CalcValuesOnImageClicked();
+            AnimationOnImageClicked();
+        }
+
+        private void CalcValuesOnImageClicked()
+        {
+            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+            TamagochiData newTamagochiData = tamagochiDataStore.ReadItem();
+
+            if (tamagochiDataStore.ReadItem().Fatigue <= 90)
+            {
+                newTamagochiData.Fatigue += 10;
+            }
+
+            if (tamagochiDataStore.ReadItem().Stimulated <= 90)
+            {
+                newTamagochiData.Stimulated += 10;
+            }
+
+            tamagochiDataStore.UpdateItem(newTamagochiData);
+        }
+
+        private async void AnimationOnImageClicked()
+        {
+            defaultPoekieImage.ScaleTo(4, 100);
+            await defaultPoekieImage.RotateTo(5, 100);
+            defaultPoekieImage.ScaleTo(3, 100);
+            await defaultPoekieImage.RotateTo(0, 100);
+        }
+
+        /////////////////////////////////////////////////////////////////////////
+    }
+}
