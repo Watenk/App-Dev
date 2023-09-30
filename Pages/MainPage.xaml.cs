@@ -7,12 +7,10 @@ namespace App_Dev_VisalStudio
     {
         public MainPage()
         {
-            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
-            tamagochiDataStore.CreateItem(tamagochiDataStore.ReadTamagochiJson());
-
+            //Create UpdateTimer
             var timer = new System.Timers.Timer()
             {
-                Interval = 10000,
+                Interval = 5000,
                 AutoReset = true
             };
             timer.Elapsed += Update;
@@ -20,6 +18,8 @@ namespace App_Dev_VisalStudio
 
             InitializeComponent();
 
+            //Update Values
+            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
             NameText.Text = tamagochiDataStore.ReadItem().Name.ToString();
         }
 

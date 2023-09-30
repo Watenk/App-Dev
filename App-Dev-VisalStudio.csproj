@@ -62,6 +62,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\RoomSwitcherView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\StatsUIView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
