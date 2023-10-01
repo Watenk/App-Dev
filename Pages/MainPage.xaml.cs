@@ -10,13 +10,14 @@ namespace App_Dev_VisalStudio
             //Create UpdateTimer
             var timer = new System.Timers.Timer()
             {
-                Interval = 5000,
+                Interval = 1000,
                 AutoReset = true
             };
             timer.Elapsed += Update;
             timer.Start();
 
             InitializeComponent();
+            BounceAnimation();
 
             //Update Values
             TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
@@ -33,7 +34,11 @@ namespace App_Dev_VisalStudio
 
         private void CheckValues()
         {
-            //Check here if tamagochi values are right or wrong
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+                NameText.Text = tamagochiDataStore.ReadItem().Name.ToString();
+            });
         }
 
         //OnImageClicked
@@ -72,5 +77,15 @@ namespace App_Dev_VisalStudio
         }
 
         /////////////////////////////////////////////////////////////////////////
+        ///
+        private async void BounceAnimation()
+        {
+            NameText.TranslateTo(TranslationX, TranslationY - 5, 5000);
+            await defaultPoekieImage.TranslateTo(TranslationX, TranslationY - 20, 5000);
+            NameText.TranslateTo(TranslationX, TranslationY + 5, 5000);
+            await defaultPoekieImage.TranslateTo(TranslationX, TranslationY + 20, 5000);
+
+            BounceAnimation();
+        }
     }
 }

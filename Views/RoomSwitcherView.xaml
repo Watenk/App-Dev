@@ -6,14 +6,44 @@
 
     <Grid        
         RowDefinitions="*, *" 
-        ColumnDefinitions="*, *"
-        ColumnSpacing="50">
+        ColumnDefinitions="*, *, *"
+        ColumnSpacing="20">
+        
+        <ImageButton
+            Grid.Row="0"
+            Grid.Column="0"
+            x:Name="KitchenRoomButton"
+            
+            Source="tempbutton.png"
+            Clicked="KitchenRoomButtonOnClicked"
+            BackgroundColor="Transparent"/>
 
         <ImageButton
-            Grid.Column="0"
             Grid.Row="0"
+            Grid.Column="1"
+            x:Name="GardenRoomButton"
             
-            Source="transparent.png"/>
+            Source="tempbutton.png"
+            Clicked="GardenRoomButtonOnClicked"
+            BackgroundColor="Transparent"/>
+
+        <ImageButton
+            Grid.Row="0"
+            Grid.Column="2"
+            x:Name="BedRoomButton"
+            
+            Source="tempbutton.png"
+            Clicked="BedRoomButtonOnClicked"
+            BackgroundColor="Transparent"/>
+
+        <ImageButton
+            Grid.Row="1"
+            Grid.Column="1"
+            x:Name="SettingsRoomButton"
+            
+            Source="settingsicon.png"
+            Clicked="SettingsRoomButtonOnClicked"
+            BackgroundColor="Transparent"/>
 
     </Grid>
     

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tamagotchi="clr-namespace:App_Dev_VisalStudio"
              x:Class="App_Dev_VisalStudio.MainPage"
-             BackgroundColor="Black">
+             BackgroundImageSource="mainroombackground.png">
 
     <Grid
         RowDefinitions="*, *, *, *, *" 
@@ -15,22 +15,26 @@
             Style="{StaticResource defaultLabelStyle}"
             x:Name="NameText"
             
-            Text="name"/>
+            Text="name"
+            TextColor="Black"
+            HeightRequest="100"/>
 
         <ImageButton
             Grid.Row="1"
             x:Name="defaultPoekieImage"
             
-            Source="defaultpoekie.jpg"
+            Source="defaultpoekie.png"
             Scale="3"
             Clicked="defaultPoekieImageOnClicked"
-            HorizontalOptions="Center"/>
+            BackgroundColor="Transparent"/>
 
         <tamagotchi:RoomSwitcherView
-            Grid.Row="2"/>
+            Grid.Row="3"
+            WidthRequest="200"/>
 
         <tamagotchi:StatsUIView
-           Grid.Row="4"/>
+           Grid.Row="4"
+            BackgroundColor="Black"/>
 
     </Grid>
 
