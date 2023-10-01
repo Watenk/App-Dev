@@ -17,18 +17,14 @@
             
             Text="name"/>
 
-        <Image
-           Grid.Row="1"
-           x:Name="defaultPoekieImage"
+        <ImageButton
+            Grid.Row="1"
+            x:Name="defaultPoekieImage"
             
-           Source="defaultpoekie.jpg"
-           Scale="3">
-
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnImageClicked" />
-            </Image.GestureRecognizers>
-            
-        </Image>
+            Source="defaultpoekie.jpg"
+            Scale="3"
+            Clicked="defaultPoekieImageOnClicked"
+            HorizontalOptions="Center"/>
 
         <tamagotchi:RoomSwitcherView
             Grid.Row="2"/>

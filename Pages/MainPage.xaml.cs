@@ -39,7 +39,7 @@ namespace App_Dev_VisalStudio
         //OnImageClicked
         ///////////////////////////////////////////////////////////////////
 
-        private void OnImageClicked(object sender, TappedEventArgs e)
+        private void defaultPoekieImageOnClicked(object sender, EventArgs e)
         {
             CalcValuesOnImageClicked();
             AnimationOnImageClicked();
