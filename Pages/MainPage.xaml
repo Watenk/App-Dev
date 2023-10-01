@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tamagotchi="clr-namespace:App_Dev_VisalStudio"
              x:Class="App_Dev_VisalStudio.MainPage"
-             BackgroundImageSource="transparent.png">
+             BackgroundColor="Black">
 
     <Grid
         RowDefinitions="*, *, *, *, *" 

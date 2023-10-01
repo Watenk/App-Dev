@@ -1,4 +1,6 @@
-﻿namespace App_Dev_VisalStudio
+﻿using System.Diagnostics;
+
+namespace App_Dev_VisalStudio
 {
     public partial class App : Application
     {
@@ -14,16 +16,29 @@
             MainPage = new AppShell();
         }
 
+        //Save Data on Android
         protected override void OnSleep()
         {
-            //Store tamagochiJson
-            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
-            tamagochiDataStore.WriteTamagochiJson(tamagochiDataStore.ReadItem());
+            SaveTamagochiJson();
         }
 
-        protected override void OnResume()
+        //Save Data on windows
+        protected override Window CreateWindow(IActivationState activationState)
         {
+            Window window = base.CreateWindow(activationState);
 
+            window.Destroying += (s, e) =>
+            {
+                SaveTamagochiJson();
+            };
+
+            return window;
+        }
+
+        private void SaveTamagochiJson()
+        {
+            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+            tamagochiDataStore.WriteTamagochiJson(tamagochiDataStore.ReadItem());
         }
     }
 }

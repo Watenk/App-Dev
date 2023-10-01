@@ -7,7 +7,7 @@ public partial class StatsUIView : ContentView
     {
         var timer = new Timer()
         {
-            Interval = 5000,
+            Interval = 1000,
             AutoReset = true
         };
         timer.Elapsed += Update;

@@ -33,14 +33,30 @@ namespace App_Dev_VisalStudio
 
         public TamagochiData ReadTamagochiJson()
         {
-            string tamagochiPath = Path.Combine(AppContext.BaseDirectory, "Tamagochi.json");
-            string tamagochiJson = File.ReadAllText(tamagochiPath);
-            return JsonConvert.DeserializeObject<TamagochiData>(tamagochiJson);
+            string tamagochiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio/Tamagochi.json");
+
+            if (File.Exists(tamagochiPath))
+            {
+                string tamagochiJson = File.ReadAllText(tamagochiPath);
+                return JsonConvert.DeserializeObject<TamagochiData>(tamagochiJson);
+            }
+            else
+            {
+                TamagochiData newTamagochiJson = new TamagochiData();
+                WriteTamagochiJson(newTamagochiJson);
+                return newTamagochiJson;
+            }
         }
 
         public void WriteTamagochiJson(TamagochiData TamagochiData)
         {
-            string tamagochiPath = Path.Combine(AppContext.BaseDirectory, "Tamagochi.json");
+            string tamagochiDirPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio");
+            if (!Directory.Exists(tamagochiDirPath))
+            {
+                Directory.CreateDirectory(tamagochiDirPath);
+            }
+
+            string tamagochiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio/Tamagochi.json");
             string newTamagochiJson = JsonConvert.SerializeObject(TamagochiData);
             File.WriteAllText(tamagochiPath, newTamagochiJson);
         }
