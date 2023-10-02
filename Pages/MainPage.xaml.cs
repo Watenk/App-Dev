@@ -7,6 +7,8 @@ namespace App_Dev_VisalStudio
     {
         public MainPage()
         {
+            InitializeComponent();
+
             //Create UpdateTimer
             var timer = new System.Timers.Timer()
             {
@@ -16,7 +18,6 @@ namespace App_Dev_VisalStudio
             timer.Elapsed += Update;
             timer.Start();
 
-            InitializeComponent();
             BounceAnimation();
 
             //Update Values

@@ -49,5 +49,27 @@
             TextChanged="IdEntryOnTextChanged"
             BackgroundColor="Black"/>
 
+        <BoxView
+            HeightRequest="50"
+            Color="Transparent"/>
+
+        <Button
+            x:Name="SaveDataButton"
+            
+            Text="Save Data To Server"
+            HorizontalOptions="Center"
+            Clicked="SaveDataButtonOnClicked"
+            BackgroundColor="Black"
+            TextColor="White"/>
+
+        <Button
+            x:Name="LoadDataButton"
+            
+            Text="Load Data From Server"
+            Clicked="LoadDataButtonOnClicked"
+            HorizontalOptions="Center"
+            BackgroundColor="Black"
+            TextColor="White"/>
+
     </VerticalStackLayout>
 </ContentPage>

@@ -27,4 +27,22 @@ public partial class SettingsPage : ContentPage
             tamagochiDataStore.ReadItem().Id = newId;
         }
     }
+
+    private async void SaveDataButtonOnClicked(object sender, EventArgs e)
+    {
+        TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+        if (await tamagochiDataStore.SaveRemotely())
+        {
+            SaveDataButton.BackgroundColor = Color.FromRgb(0, 255, 0);
+        }
+    }
+
+    private async void LoadDataButtonOnClicked(object sender, EventArgs e)
+    {
+        TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+        if (await tamagochiDataStore.LoadRemotely())
+        {
+            LoadDataButton.BackgroundColor = Color.FromRgb(0, 255, 0);
+        }
+    }
 }

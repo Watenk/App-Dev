@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tamagotchi="clr-namespace:App_Dev_VisalStudio"
              x:Class="App_Dev_VisalStudio.GardenRoomPage"
              Title="GardenRoomPage"
              BackgroundImageSource="gardenroombackground.png">
-    
-    <VerticalStackLayout>
 
-    </VerticalStackLayout>
-    
+    <Grid
+        RowDefinitions="*, *, *, *, *" 
+        RowSpacing="50"
+        ColumnSpacing="50">
+
+        <tamagotchi:StatsUIView
+           Grid.Row="4"
+            BackgroundColor="Black"/>
+
+    </Grid>
+
 </ContentPage>

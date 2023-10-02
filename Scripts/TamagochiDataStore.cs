@@ -31,7 +31,60 @@ namespace App_Dev_VisalStudio
             tamagochiData = null;
         }
 
-        public TamagochiData ReadTamagochiJson()
+        public TamagochiData ReadTamagochiData()
+        {
+            return LoadLocally();
+        }
+
+        public async Task<bool> LoadRemotely()
+        {
+            if (tamagochiData.Id != 0)
+            {
+                var httpClient = new HttpClient();
+
+                var response = await httpClient.GetAsync("https://tamagotchi.hku.nl/api/Creatures/" + tamagochiData.Id.ToString());
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseString = await response.Content.ReadAsStringAsync();
+                    tamagochiData = JsonConvert.DeserializeObject<TamagochiData>(responseString);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public async Task<bool> SaveRemotely()
+        {
+            if (tamagochiData.Id != 0)
+            {
+                var httpClient = new HttpClient();
+
+                var newJson = new StringContent(JsonConvert.SerializeObject(tamagochiData), Encoding.UTF8, "application/json");
+                var response = await httpClient.PutAsync("https://tamagotchi.hku.nl/api/Creatures/" + tamagochiData.Id.ToString(), newJson);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void SaveLocally()
+        {
+            string tamagochiDirPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio");
+            if (!Directory.Exists(tamagochiDirPath))
+            {
+                Directory.CreateDirectory(tamagochiDirPath);
+            }
+
+            string tamagochiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio/Tamagochi.json");
+            string newTamagochiJson = JsonConvert.SerializeObject(tamagochiData);
+            File.WriteAllText(tamagochiPath, newTamagochiJson);
+        }
+
+        private TamagochiData LoadLocally()
         {
             string tamagochiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio/Tamagochi.json");
 
@@ -43,22 +96,9 @@ namespace App_Dev_VisalStudio
             else
             {
                 TamagochiData newTamagochiJson = new TamagochiData();
-                WriteTamagochiJson(newTamagochiJson);
+                SaveLocally();
                 return newTamagochiJson;
             }
-        }
-
-        public void WriteTamagochiJson(TamagochiData TamagochiData)
-        {
-            string tamagochiDirPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio");
-            if (!Directory.Exists(tamagochiDirPath))
-            {
-                Directory.CreateDirectory(tamagochiDirPath);
-            }
-
-            string tamagochiPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "App_Dev_VisalStudio/Tamagochi.json");
-            string newTamagochiJson = JsonConvert.SerializeObject(TamagochiData);
-            File.WriteAllText(tamagochiPath, newTamagochiJson);
         }
     }
 }

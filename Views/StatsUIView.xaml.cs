@@ -5,6 +5,8 @@ public partial class StatsUIView : ContentView
 {
     public StatsUIView()
     {
+        InitializeComponent();
+
         var timer = new Timer()
         {
             Interval = 1000,
@@ -12,8 +14,6 @@ public partial class StatsUIView : ContentView
         };
         timer.Elapsed += Update;
         timer.Start();
-
-        InitializeComponent();
 
         UpdateStatValues();
     }
