@@ -14,7 +14,7 @@
             Grid.Column="0"
             x:Name="KitchenRoomButton"
             
-            Source="tempbutton.png"
+            Source="kitchenroombutton.png"
             Clicked="KitchenRoomButtonOnClicked"
             BackgroundColor="Transparent"/>
 
@@ -23,7 +23,7 @@
             Grid.Column="1"
             x:Name="GardenRoomButton"
             
-            Source="tempbutton.png"
+            Source="gardenroombutton.png"
             Clicked="GardenRoomButtonOnClicked"
             BackgroundColor="Transparent"/>
 
@@ -32,7 +32,7 @@
             Grid.Column="2"
             x:Name="BedRoomButton"
             
-            Source="tempbutton.png"
+            Source="bedroombutton.png"
             Clicked="BedRoomButtonOnClicked"
             BackgroundColor="Transparent"/>
 

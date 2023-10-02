@@ -5,6 +5,7 @@ namespace App_Dev_VisalStudio
 {
     public partial class MainPage : ContentPage
     {
+
         public MainPage()
         {
             InitializeComponent();
