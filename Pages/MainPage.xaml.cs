@@ -57,9 +57,9 @@ namespace App_Dev_VisalStudio
             TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
             TamagochiData newTamagochiData = tamagochiDataStore.ReadItem();
 
-            if (tamagochiDataStore.ReadItem().Fatigue <= 90)
+            if (tamagochiDataStore.ReadItem().tired <= 90)
             {
-                newTamagochiData.Fatigue += 10;
+                newTamagochiData.tired += 10;
             }
 
             if (tamagochiDataStore.ReadItem().Stimulated <= 90)

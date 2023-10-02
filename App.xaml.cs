@@ -18,10 +18,25 @@ namespace App_Dev_VisalStudio
             MainPage = new AppShell();
         }
 
+        //Save On Android
         protected override void OnSleep()
         {
             TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
             tamagochiDataStore.SaveLocally();
+        }
+
+        //Save On Windows
+        protected override Window CreateWindow(IActivationState activationState)
+        {
+            Window window = base.CreateWindow(activationState);
+
+            window.Destroying += (s, e) =>
+            {
+                TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+                tamagochiDataStore.SaveLocally();
+            };
+
+            return window;
         }
     }
 }
