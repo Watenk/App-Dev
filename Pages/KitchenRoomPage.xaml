@@ -3,16 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tamagotchi="clr-namespace:App_Dev_VisalStudio"
              x:Class="App_Dev_VisalStudio.KitchenRoomPage"
-             Title="KitchenRoomPage">
+             Title="KitchenRoomPage"
+             BackgroundImageSource="noteatingpoekie.png">
 
     <Grid
         RowDefinitions="*, *, *, *, *" 
         RowSpacing="50"
         ColumnSpacing="50">
 
+        <HorizontalStackLayout
+            Grid.Row="3"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <Button
+                x:Name="EatButton"
+                
+                Text="Eat"
+                Clicked="EatButtonOnClicked"/>
+
+            <Button
+                x:Name="DrinkButton"
+                
+                Text="Drink"
+                Clicked="DrinkButtonOnClicked"/>
+
+        </HorizontalStackLayout>
+
         <tamagotchi:StatsUIView
            Grid.Row="4"
-            BackgroundColor="Black"/>
+           BackgroundColor="Black"/>
 
     </Grid>
     

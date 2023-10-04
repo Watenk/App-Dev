@@ -1,3 +1,4 @@
+using Microsoft.Maui.Platform;
 using System.Timers;
 
 namespace App_Dev_VisalStudio;
@@ -67,6 +68,8 @@ public partial class BedRoomPage : ContentPage
             sleepButton.BackgroundColor = Color.FromRgb(0, 255, 0);
             sleepButton.TextColor = Color.FromRgb(0, 0, 0);
             BackgroundImageSource = "sleepingpoekie.jpg";
+
+            WakeAnimation();
         }
         else
         {
@@ -74,6 +77,18 @@ public partial class BedRoomPage : ContentPage
             sleepButton.Text = "Sleep!";
             sleepButton.TextColor = Color.FromRgb(255, 255, 255);
             BackgroundImageSource = "notsleepingpoekie.jpeg";
+
+            SLeepAnimation();
         }
+    }
+
+    private async void SLeepAnimation()
+    {
+        await sleepButton.ScaleTo(2);
+    }
+
+    private async void WakeAnimation()
+    {
+        await sleepButton.ScaleTo(1.5);
     }
 }

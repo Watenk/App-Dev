@@ -28,6 +28,15 @@
             Clicked="defaultPoekieImageOnClicked"
             BackgroundColor="Transparent"/>
 
+        <Label
+            Grid.Row="2"
+            x:Name="statLabel"
+            Style="{StaticResource defaultLabelStyle}"
+            
+            TextColor="Black"
+            BackgroundColor="White"
+            HeightRequest="100"/>
+
         <tamagotchi:RoomSwitcherView
             Grid.Row="3"
             WidthRequest="200"/>

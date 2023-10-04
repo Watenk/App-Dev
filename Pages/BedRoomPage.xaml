@@ -20,7 +20,8 @@
             Text="Sleep!"
             BackgroundColor="Red"
             TextColor="white"
-            Clicked="sleepButtonOnClicked"/>
+            Clicked="sleepButtonOnClicked"
+            Scale="2"/>
 
         <Slider 
             Grid.Row="1"

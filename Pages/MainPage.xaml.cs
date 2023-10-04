@@ -5,7 +5,6 @@ namespace App_Dev_VisalStudio
 {
     public partial class MainPage : ContentPage
     {
-
         public MainPage()
         {
             InitializeComponent();
@@ -31,16 +30,54 @@ namespace App_Dev_VisalStudio
 
         private void Update(object sender, ElapsedEventArgs e)
         {
-            CheckValues();
-        }
-
-        private void CheckValues()
-        {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
-                NameText.Text = tamagochiDataStore.ReadItem().Name.ToString();
+                UpdateValues();
+                UpdateStatText();
             });
+        }
+
+        private void UpdateValues()
+        {
+            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+            NameText.Text = tamagochiDataStore.ReadItem().Name.ToString();
+        }
+
+        private void UpdateStatText()
+        {
+            TamagochiDataStore tamagochiDataStore = DependencyService.Get<TamagochiDataStore>();
+            string newStatString = tamagochiDataStore.ReadItem().Name.ToString() + " Is: ";
+
+            if (tamagochiDataStore.ReadItem().Hunger >= 90)
+            {
+                newStatString += "Hungry, ";
+            }
+
+            if (tamagochiDataStore.ReadItem().Thirst >= 90)
+            {
+                newStatString += "Thirsty, ";
+            }
+
+            if (tamagochiDataStore.ReadItem().Boredom >= 90)
+            {
+                newStatString += "Bored, ";
+            }
+
+            if (tamagochiDataStore.ReadItem().Loneliness >= 90)
+            {
+                newStatString += "Lonely, ";
+            }
+            if (tamagochiDataStore.ReadItem().Stimulated >= 90)
+            {
+                newStatString += "Stimulated, ";
+            }
+
+            if (tamagochiDataStore.ReadItem().tired >= 90)
+            {
+                newStatString += "Tired, ";
+            }
+
+            statLabel.Text = newStatString;
         }
 
         //OnImageClicked
