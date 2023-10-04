@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tamagotchi="clr-namespace:App_Dev_VisalStudio"
+             x:Class="App_Dev_VisalStudio.BedRoomPage"
+             Title="BedRoomPage"
+             BackgroundImageSource="notsleepingpoekie.jpeg">
+
+    <Grid
+        RowDefinitions="*, *, *, *, *" 
+        RowSpacing="50"
+        ColumnSpacing="50">
+
+        <Button
+            Grid.Row="0"
+            x:Name="sleepButton"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            
+            Text="Sleep!"
+            BackgroundColor="Red"
+            TextColor="white"
+            Clicked="sleepButtonOnClicked"
+            Scale="2"/>
+
+        <Slider 
+            Grid.Row="1"
+            x:Name="fatigueSlider"
+            Style="{StaticResource onlyDisplaySlider}"
+            
+            MinimumTrackColor="Gray"
+            MaximumTrackColor="Blue"/>
+
+        <tamagotchi:StatsUIView
+           Grid.Row="4"
+            BackgroundColor="Black"/>
+
+    </Grid>
+    
+</ContentPage>

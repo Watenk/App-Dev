@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tamagotchi="clr-namespace:App_Dev_VisalStudio"
+             x:Class="App_Dev_VisalStudio.MainPage"
+             BackgroundImageSource="mainroombackground.png">
+
+    <Grid
+        RowDefinitions="*, *, *, *, *" 
+        RowSpacing="50"
+        ColumnSpacing="50">
+
+        <Label
+            Grid.Row="0"
+            Style="{StaticResource defaultLabelStyle}"
+            x:Name="NameText"
+            
+            Text="name"
+            TextColor="Black"
+            HeightRequest="100"/>
+
+        <ImageButton
+            Grid.Row="1"
+            x:Name="defaultPoekieImage"
+            
+            Source="defaultpoekie.png"
+            Scale="3"
+            Clicked="defaultPoekieImageOnClicked"
+            BackgroundColor="Transparent"/>
+
+        <Label
+            Grid.Row="2"
+            x:Name="statLabel"
+            Style="{StaticResource defaultLabelStyle}"
+            
+            TextColor="Black"
+            BackgroundColor="White"
+            HeightRequest="100"/>
+
+        <tamagotchi:RoomSwitcherView
+            Grid.Row="3"
+            WidthRequest="200"/>
+
+        <tamagotchi:StatsUIView
+           Grid.Row="4"
+            BackgroundColor="Black"/>
+
+    </Grid>
+
+</ContentPage>
